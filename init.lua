@@ -71,7 +71,7 @@ minetest.register_node("chest_recovery:chest", {
             local player_inv = sender:get_inventory()
 
             -- Transférer l'armure
-            player_inv:set_stack("armor", 1, ItemStack("default:sword_wood"))
+            player_inv:set_stack("armor", 1, ItemStack("chest_recovery:inutile"))
             for i = 1, inv:get_size("armor") do
                 local stack = inv:get_stack("armor", i)
                 if i > 1 or not stack:is_empty() then
@@ -87,8 +87,7 @@ minetest.register_node("chest_recovery:chest", {
                     end
                 end
             end
-            player_inv:set_stack("armor", 1, ItemStack("chest_recovery:chest"))
-            player_inv:remove_item("armor", 1, ItemStack("chest_recovery:chest"))
+
 
             -- Transférer l'offhand
             local offhand_stack = inv:get_stack("offhand", 1)
@@ -146,3 +145,13 @@ minetest.register_on_dieplayer(function(player)
         chest_meta:set_string("formspec", chest_formspec)
     end
 end)
+
+minetest.register_craftitem("chest_recovery:inutile", {
+    description = "Item Inutile",
+    inventory_image = "votre_mod_inutile.png", -- Remplacez cela par le chemin de votre texture
+    on_use = function(itemstack, user, pointed_thing)
+        -- Cette fonction est appelée lorsque le joueur utilise l'item
+        -- Vous pouvez laisser cette fonction vide, car vous avez mentionné que l'item ne sert à rien
+        return itemstack
+    end,
+})
