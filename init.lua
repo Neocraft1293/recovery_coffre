@@ -148,7 +148,7 @@ end)
 
 minetest.register_craftitem("chest_recovery:inutile", {
     description = "Item Inutile",
-    inventory_image = "chest_recovery_inutile.png", -- Remplacez cela par le chemin de votre texture
+    --inventory_image = "chest_recovery_inutile.png", -- Remplacez cela par le chemin de votre texture
     groups = {not_in_creative_inventory = 1},
     on_use = function(itemstack, user, pointed_thing)
         itemstack:clear()
