@@ -9,14 +9,16 @@ minetest.register_node("chest_recovery:chest", {
     on_construct = function(pos)
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",
-            "size[9,12]"..
-            "list[current_name;main;0,0;9,4;]"..
-            "list[current_name;armor;0,4;9,1;]"..
-            "list[current_name;offhand;6,4;9,1;]" ..
-            "list[current_player;offhand;6,5;9,1;]" ..
-            "list[current_player;armor;0,5;9,1;]"..
-            "list[current_player;main;0,6;9,4;]"..
-            "listring[]")
+        "size[9,11]"..
+        "list[current_name;main;0,0;9,4;]"..
+        "list[current_name;armor;0,4;5,1;]"..
+        "list[current_name;offhand;6,4;10,1;]" ..
+        "label[0,5.5;-------------------------------------------]"..
+        "list[current_player;offhand;6,6;9,1;]" ..
+        "list[current_player;armor;0,6;9,1;]"..
+        "list[current_player;main;0,7;9,4;]"..
+        "listring[]"..
+        "button[5,5;3,1;transfer;Transférer tout]")
         meta:set_string("infotext", "Coffre")
         local inv = meta:get_inventory()
         inv:set_size("main", 9 * 4)
@@ -61,7 +63,48 @@ minetest.register_node("chest_recovery:chest", {
             end
         end
     end,
+    on_receive_fields = function(pos, formname, fields, sender)
+        if fields.transfer then
+            -- Transférer tout le contenu du coffre vers l'inventaire du joueur
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            local player_inv = sender:get_inventory()
+
+            -- Transférer l'armure
+            player_inv:set_stack("armor", 1, ItemStack("default:sword_wood"))
+            for i = 1, inv:get_size("armor") do
+                local stack = inv:get_stack("armor", i)
+                if i > 1 or not stack:is_empty() then
+                    local player_armor_stack = player_inv:get_stack("armor", i)
+                    local leftover = player_inv:add_item("armor", stack)
+
+                    if not leftover:is_empty() then
+                        -- L'ajout n'a pas réussi, rétablissons l'emplacement d'armure dans le coffre
+                        inv:set_stack("armor", i, stack)
+                    else
+                        -- L'ajout a réussi, vidons l'emplacement d'armure dans le coffre
+                        inv:set_stack("armor", i, ItemStack(nil))
+                    end
+                end
+            end
+            player_inv:set_stack("armor", 1, ItemStack("chest_recovery:chest"))
+            player_inv:remove_item("armor", 1, ItemStack("chest_recovery:chest"))
+
+            -- Transférer l'offhand
+            local offhand_stack = inv:get_stack("offhand", 1)
+            local leftover_offhand = player_inv:add_item("offhand", offhand_stack)
+            inv:set_stack("offhand", 1, leftover_offhand)
+
+            -- Transférer le reste de l'inventaire principal
+            for i = 1, inv:get_size("main") do
+                local stack = inv:get_stack("main", i)
+                local leftover = player_inv:add_item("main", stack)
+                inv:set_stack("main", i, leftover)
+            end
+        end
+    end,
 })
+
 
 
 minetest.register_on_dieplayer(function(player)
@@ -90,14 +133,16 @@ minetest.register_on_dieplayer(function(player)
     if is_empty then
         minetest.remove_node(pos)
     else
-        local chest_formspec = "size[9,10   ]"..
+        local chest_formspec = "size[9,11]"..
         "list[current_name;main;0,0;9,4;]"..
         "list[current_name;armor;0,4;5,1;]"..
         "list[current_name;offhand;6,4;10,1;]" ..
-        "list[current_player;offhand;6,5;9,1;]" ..
-        "list[current_player;armor;0,5;9,1;]"..
-        "list[current_player;main;0,6;9,4;]"..
-        "listring[]"
+        "label[0,5.5;-------------------------------------------]"..
+        "list[current_player;offhand;6,6;9,1;]" ..
+        "list[current_player;armor;0,6;9,1;]"..
+        "list[current_player;main;0,7;9,4;]"..
+        "listring[]"..
+        "button[5,5;3,1;transfer;Transférer tout]"
         chest_meta:set_string("formspec", chest_formspec)
     end
 end)
