@@ -146,12 +146,14 @@ minetest.register_on_dieplayer(function(player)
     end
 end)
 
-minetest.register_craftitem("chest_recovery:inutile", {
+minetest.register_craftitem("votre_mod:inutile", {
     description = "Item Inutile",
     inventory_image = "votre_mod_inutile.png", -- Remplacez cela par le chemin de votre texture
+    groups = {not_in_creative_inventory = 1}, -- Cela empêchera l'item de figurer dans l'inventaire créatif
     on_use = function(itemstack, user, pointed_thing)
-        -- Cette fonction est appelée lorsque le joueur utilise l'item
-        -- Vous pouvez laisser cette fonction vide, car vous avez mentionné que l'item ne sert à rien
+        -- Supprimer l'item du joueur après utilisation
+        itemstack:clear()  -- Cette ligne supprime l'item du stack
         return itemstack
     end,
 })
+
