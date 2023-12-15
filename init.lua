@@ -45,12 +45,50 @@ minetest.register_node("chest_recovery:chest", {
             minetest.add_item(pos, ItemStack(item))
         end
     end,
+    on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+        -- Code à exécuter lorsque le joueur clique avec le bouton droit sur le coffre
+        --minetest.chat_send_player(player:get_player_name(), "Coffre ouvert!")
+    
+        -- Supprimer toutes les boussoles de récupération de l'inventaire du joueur
+        local player_inv = player:get_inventory()
+    
+        for i = 1, player_inv:get_size("main") do
+            local stack = player_inv:get_stack("main", i)
+            --minetest.chat_send_player(player:get_player_name(), "Nom de l'item : " .. stack:get_name())
+    
+            if stack:get_name():find("mcl_compass:.*_recovery") then
+                -- Utilisez la méthode remove_item pour supprimer l'élément de l'inventaire
+                player_inv:remove_item("main", stack)
+                --minetest.chat_send_player(player:get_player_name(), "Coffre de récupération supprimé!")
+            end
+        end
+    end,
     on_receive_fields = function(pos, formname, fields, sender)
         if fields.transfer then
             -- Transférer tout le contenu du coffre vers l'inventaire du joueur
             local meta = minetest.get_meta(pos)
             local inv = meta:get_inventory()
             local player_inv = sender:get_inventory()
+
+
+
+            -- Supprimer toutes les boussoles de récupération de l'inventaire du joueur
+for i = 1, player_inv:get_size("main") do
+    local stack = player_inv:get_stack("main", i)
+    --.chat_send_player(sender:get_player_name(), "Nom de l'item : " .. stack:get_name())
+
+    if stack:get_name():find("mcl_compass:.*_recovery") then
+        -- Utilisez la méthode remove_item pour supprimer l'élément de l'inventaire
+        player_inv:remove_item("main", stack)
+        minetest.chat_send_player(sender:get_player_name(), "Coffre de récupération supprimé!")
+    end
+end
+
+
+
+
+
+
 
             -- Transférer l'armure
 for i = 1, inv:get_size("armor") do
