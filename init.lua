@@ -133,7 +133,25 @@ mcl_armor.update(player)
 minetest.register_on_dieplayer(function(player)
     local player_inv = player:get_inventory()
     local pos = player:get_pos()
-    pos.y = pos.y
+
+    local air_found = false
+
+    -- Vérifiez s'il y a de l'air au-dessus de la position du joueur
+    while not air_found do
+        local node_above = minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z})
+        if node_above.name == "air" then
+            air_found = true
+        else
+            -- Si ce n'est pas de l'air, ajustez la position vers le haut
+            pos.y = pos.y + 1
+
+            -- Vérifiez si la nouvelle position est en dehors des limites du monde
+            if pos.y > 127 then
+                -- Abandonnez la recherche si nous atteignons le haut du monde
+                return
+            end
+        end
+    end
 
     minetest.set_node(pos, {name = "chest_recovery:chest"})
 
