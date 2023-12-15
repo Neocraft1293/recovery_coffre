@@ -136,6 +136,9 @@ minetest.register_on_dieplayer(function(player)
 
     local air_found = false
 
+    -- Limite maximale pour la recherche ascendante
+    local max_search_height = 31000
+
     -- Vérifiez s'il y a de l'air au-dessus de la position du joueur
     while not air_found do
         local node_above = minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z})
@@ -145,9 +148,9 @@ minetest.register_on_dieplayer(function(player)
             -- Si ce n'est pas de l'air, ajustez la position vers le haut
             pos.y = pos.y + 1
 
-            -- Vérifiez si la nouvelle position est en dehors des limites du monde
-            if pos.y > 127 then
-                -- Abandonnez la recherche si nous atteignons le haut du monde
+            -- Vérifiez si la nouvelle position dépasse la limite de recherche
+            if pos.y > max_search_height then
+                -- Abandonnez la recherche si nous atteignons la limite
                 return
             end
         end
