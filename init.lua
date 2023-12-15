@@ -134,6 +134,8 @@ minetest.register_on_dieplayer(function(player)
 end)
 
 
+
+
 -- Define compass_frames as a global variable
 compass_frames = 32
 
