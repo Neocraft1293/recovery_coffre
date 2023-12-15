@@ -53,22 +53,22 @@ minetest.register_node("chest_recovery:chest", {
             local player_inv = sender:get_inventory()
 
             -- Transférer l'armure
-            player_inv:set_stack("armor", 1, ItemStack("chest_recovery:inutile"))
-            for i = 1, inv:get_size("armor") do
-                local stack = inv:get_stack("armor", i)
-                if i > 1 or not stack:is_empty() then
-                    local player_armor_stack = player_inv:get_stack("armor", i)
-                    local leftover = player_inv:add_item("armor", stack)
+for i = 1, inv:get_size("armor") do
+    local stack = inv:get_stack("armor", i)
+    if i > 1 or not stack:is_empty() then
+        local player_armor_stack = player_inv:get_stack("armor", i)
+        if player_armor_stack:is_empty() then
+            player_inv:set_stack("armor", i, stack)
+            inv:set_stack("armor", i, ItemStack(nil))
+        end
+    end
+end
+-- Mettre à jour l'armure du joueur
+-- Mettre à jour l'armure du joueur
+local player_name = sender:get_player_name()
+local player = minetest.get_player_by_name(player_name)
+mcl_armor.update(player)
 
-                    if not leftover:is_empty() then
-                        -- L'ajout n'a pas réussi, rétablissons l'emplacement d'armure dans le coffre
-                        inv:set_stack("armor", i, stack)
-                    else
-                        -- L'ajout a réussi, vidons l'emplacement d'armure dans le coffre
-                        inv:set_stack("armor", i, ItemStack(nil))
-                    end
-                end
-            end
 
 
             -- Transférer l'offhand
@@ -133,15 +133,6 @@ minetest.register_on_dieplayer(function(player)
     end
 end)
 
-minetest.register_craftitem("chest_recovery:inutile", {
-    description = "Item Inutile",
-    --inventory_image = "chest_recovery_inutile.png", -- Remplacez cela par le chemin de votre texture
-    groups = {not_in_creative_inventory = 1},
-    on_use = function(itemstack, user, pointed_thing)
-        itemstack:clear()
-        return itemstack
-    end,
-})
 
 -- Define compass_frames as a global variable
 compass_frames = 32
@@ -196,4 +187,6 @@ minetest.register_on_respawnplayer(function(player)
         end
     end
 end)
+
+
 
