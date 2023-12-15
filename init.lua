@@ -9,21 +9,22 @@ minetest.register_node("chest_recovery:chest", {
     on_construct = function(pos)
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",
-        "size[9,11]"..
-        "list[current_name;main;0,0;9,4;]"..
-        "list[current_name;armor;0,4;5,1;]"..
-        "list[current_name;offhand;6,4;10,1;]" ..
-        "label[0,5.5;-------------------------------------------]"..
-        "list[current_player;offhand;6,6;9,1;]" ..
-        "list[current_player;armor;0,6;9,1;]"..
-        "list[current_player;main;0,7;9,4;]"..
-        "listring[]"..
-        "button[5,5;3,1;transfer;Transférer tout]")
+            "size[9,11]"..
+            "background[-0.19,-0.25;9.45,11.75;mcl_formspec_itemslot.png]"..
+            "list[current_name;main;0,0;9,4;]"..
+            "list[current_name;armor;0,4;5,1;]"..
+            "list[current_name;offhand;6,4;10,1;]" ..
+            "label[0,5.5;-------------------------------------------]"..
+            "list[current_player;offhand;6,6;9,1;]" ..
+            "list[current_player;armor;0,6;9,1;]"..
+            "list[current_player;main;0,7;9,4;]"..
+            "listring[]"..
+            "button[5,5;3,1;transfer;Transférer tout]")
         meta:set_string("infotext", "Coffre")
         local inv = meta:get_inventory()
         inv:set_size("main", 9 * 4)
         inv:set_size("armor", 9)
-        inv:set_size("offhand", 1) -- Ajout de la section "offhand"
+        inv:set_size("offhand", 1)
     end,
     on_destruct = function(pos)
         local meta = minetest.get_meta(pos)
@@ -42,25 +43,6 @@ minetest.register_node("chest_recovery:chest", {
         -- Lâcher tous les objets au-dessus du nœud du coffre
         for _, item in ipairs(drop_items) do
             minetest.add_item(pos, ItemStack(item))
-        end
-    end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-        -- Détection du clic Shift
-        if player:get_player_control().sneak then
-            local meta = minetest.get_meta(pos)
-            local inv = meta:get_inventory()
-
-            -- Déplacement d'objets du coffre au joueur
-            if listname == "main" then
-                local leftover = player:get_inventory():add_item("main", stack)
-                inv:set_stack("main", index, leftover)
-            elseif listname == "armor" then
-                local leftover = player:get_inventory():add_item("armor", stack)
-                inv:set_stack("armor", index, leftover)
-            elseif listname == "offhand" then
-                local leftover = player:get_inventory():add_item("offhand", stack)
-                inv:set_stack("offhand", index, leftover)
-            end
         end
     end,
     on_receive_fields = function(pos, formname, fields, sender)
@@ -100,6 +82,10 @@ minetest.register_node("chest_recovery:chest", {
                 local leftover = player_inv:add_item("main", stack)
                 inv:set_stack("main", i, leftover)
             end
+            -- Vérifier si le coffre est vide, puis le supprimer
+            if inv:is_empty("main") and inv:is_empty("armor") and inv:is_empty("offhand") then
+            minetest.remove_node(pos)
+        end
         end
     end,
 })
@@ -133,6 +119,7 @@ minetest.register_on_dieplayer(function(player)
         minetest.remove_node(pos)
     else
         local chest_formspec = "size[9,11]"..
+        "background[-0.19,-0.25;9.45,11.75;mcl_formspec_itemslot.png]"..
         "list[current_name;main;0,0;9,4;]"..
         "list[current_name;armor;0,4;5,1;]"..
         "list[current_name;offhand;6,4;10,1;]" ..
@@ -156,4 +143,57 @@ minetest.register_craftitem("chest_recovery:inutile", {
     end,
 })
 
+-- Define compass_frames as a global variable
+compass_frames = 32
+
+minetest.register_on_respawnplayer(function(player)
+    -- Generate a new random frame for the recovery compass
+    local random_frame = math.random(0, compass_frames - 1)
+
+    -- Create the recovery compass item
+    local recovery_compass = ItemStack("mcl_compass:" .. random_frame .. "_recovery")
+    local player_inv = player:get_inventory()
+
+    if player_inv then
+        player_inv:add_item("main", recovery_compass)
+    end
+
+    local pos = player:get_pos()
+    local chest_pos = minetest.find_node_near(pos, 5, "chest_recovery:chest")
+
+    if chest_pos then
+        local chest_meta = minetest.get_meta(chest_pos)
+        local chest_inv = chest_meta:get_inventory()
+
+        local is_empty = true
+
+        for _, listname in ipairs({"main", "armor", "offhand", "craft"}) do
+            for i = 1, player_inv:get_size(listname) do
+                local stack = player_inv:get_stack(listname, i)
+                chest_inv:set_stack(listname, i, stack)
+                player_inv:set_stack(listname, i, ItemStack(nil))
+                if not stack:is_empty() then
+                    is_empty = false
+                end
+            end
+        end
+
+        if is_empty then
+            minetest.remove_node(chest_pos)
+        else
+            local chest_formspec = "size[9,11]" ..
+                "background[-0.19,-0.25;9.45,11.75;mcl_formspec_itemslot.png]" ..
+                "list[current_name;main;0,0;9,4;]" ..
+                "list[current_name;armor;0,4;5,1;]" ..
+                "list[current_name;offhand;6,4;10,1;]" ..
+                "label[0,5.5;-------------------------------------------]" ..
+                "list[current_player;offhand;6,6;9,1;]" ..
+                "list[current_player;armor;0,6;9,1;]" ..
+                "list[current_player;main;0,7;9,4;]" ..
+                "listring[]" ..
+                "button[5,5;3,1;transfer;Transférer tout]"
+            chest_meta:set_string("formspec", chest_formspec)
+        end
+    end
+end)
 
