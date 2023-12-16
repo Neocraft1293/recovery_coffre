@@ -80,7 +80,7 @@ for i = 1, player_inv:get_size("main") do
     if stack:get_name():find("mcl_compass:.*_recovery") then
         -- Utilisez la méthode remove_item pour supprimer l'élément de l'inventaire
         player_inv:remove_item("main", stack)
-        -- minetest.chat_send_player(sender:get_player_name(), "Coffre de récupération supprimé!")
+        minetest.chat_send_player(sender:get_player_name(), "Coffre de récupération supprimé!")
     end
 end
 
@@ -133,28 +133,7 @@ mcl_armor.update(player)
 minetest.register_on_dieplayer(function(player)
     local player_inv = player:get_inventory()
     local pos = player:get_pos()
-
-    local air_found = false
-
-    -- Limite maximale pour la recherche ascendante
-    local max_search_height = 31000
-
-    -- Vérifiez s'il y a de l'air au-dessus de la position du joueur
-    while not air_found do
-        local node_above = minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z})
-        if node_above.name == "air" then
-            air_found = true
-        else
-            -- Si ce n'est pas de l'air, ajustez la position vers le haut
-            pos.y = pos.y + 1
-
-            -- Vérifiez si la nouvelle position dépasse la limite de recherche
-            if pos.y > max_search_height then
-                -- Abandonnez la recherche si nous atteignons la limite
-                return
-            end
-        end
-    end
+    pos.y = pos.y
 
     minetest.set_node(pos, {name = "chest_recovery:chest"})
 
@@ -248,6 +227,5 @@ minetest.register_on_respawnplayer(function(player)
         end
     end
 end)
-
 
 
