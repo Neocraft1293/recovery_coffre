@@ -80,7 +80,7 @@ for i = 1, player_inv:get_size("main") do
     if stack:get_name():find("mcl_compass:.*_recovery") then
         -- Utilisez la méthode remove_item pour supprimer l'élément de l'inventaire
         player_inv:remove_item("main", stack)
-        minetest.chat_send_player(sender:get_player_name(), "Coffre de récupération supprimé!")
+        -- minetest.chat_send_player(sender:get_player_name(), "Coffre de récupération supprimé!")
     end
 end
 
