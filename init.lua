@@ -11,11 +11,116 @@ minetest.register_node("chest_recovery:chest", {
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",
             "size[9,11]"..
-            "background[-0.19,-0.25;9.45,11.75;mcl_formspec_itemslot.png]"..
             "list[current_name;main;0,0;9,4;]"..
+-- Ligne 1
+    mcl_formspec.get_itemslot_bg_v4(0, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 0, 1, 1) ..
+-- Ligne 2
+    mcl_formspec.get_itemslot_bg_v4(0, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 1, 1, 1) ..
+
+-- Ligne 3
+    mcl_formspec.get_itemslot_bg_v4(0, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 2, 1, 1) ..
+
+-- Ligne 4
+    mcl_formspec.get_itemslot_bg_v4(0, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 3, 1, 1) ..
+
+-- Ligne 5
+mcl_formspec.get_itemslot_bg_v4(1, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 4, 1, 1) ..
+
+-- Ligne 6
+
+-- Ligne 7
+mcl_formspec.get_itemslot_bg_v4(1, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 6, 1, 1) ..
+
+-- Ligne 8
+
+mcl_formspec.get_itemslot_bg_v4(0, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 7, 1, 1) ..
+
+-- Ligne 9
+mcl_formspec.get_itemslot_bg_v4(0, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 8, 1, 1) ..
+
+-- Ligne 10
+mcl_formspec.get_itemslot_bg_v4(0, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 9, 1, 1) ..
+
+-- Ligne 11
+mcl_formspec.get_itemslot_bg_v4(0, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 10, 1, 1) ..
+
+
+
             "list[current_name;armor;0,4;5,1;]"..
             "list[current_name;offhand;6,4;10,1;]" ..
-            "label[0,5.5;-------------------------------------------]"..
+            "label[0,5;-------------------------------------------]"..
             "list[current_player;offhand;6,6;9,1;]" ..
             "list[current_player;armor;0,6;9,1;]"..
             "list[current_player;main;0,7;9,4;]"..
@@ -158,11 +263,116 @@ minetest.register_on_dieplayer(function(player)
         minetest.remove_node(pos)
     else
         local chest_formspec = "size[9,11]"..
-        "background[-0.19,-0.25;9.45,11.75;mcl_formspec_itemslot.png]"..
         "list[current_name;main;0,0;9,4;]"..
+-- Ligne 1
+mcl_formspec.get_itemslot_bg_v4(0, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 0, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 0, 1, 1) ..
+-- Ligne 2
+mcl_formspec.get_itemslot_bg_v4(0, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 1, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 1, 1, 1) ..
+
+-- Ligne 3
+mcl_formspec.get_itemslot_bg_v4(0, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 2, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 2, 1, 1) ..
+
+-- Ligne 4
+mcl_formspec.get_itemslot_bg_v4(0, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 3, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 3, 1, 1) ..
+
+-- Ligne 5
+mcl_formspec.get_itemslot_bg_v4(1, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 4, 1, 1) ..
+
+-- Ligne 6
+
+-- Ligne 7
+mcl_formspec.get_itemslot_bg_v4(1, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 6, 1, 1) ..
+
+-- Ligne 8
+
+mcl_formspec.get_itemslot_bg_v4(0, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 7, 1, 1) ..
+
+-- Ligne 9
+mcl_formspec.get_itemslot_bg_v4(0, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 8, 1, 1) ..
+
+-- Ligne 10
+mcl_formspec.get_itemslot_bg_v4(0, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 9, 1, 1) ..
+
+-- Ligne 11
+mcl_formspec.get_itemslot_bg_v4(0, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 10, 1, 1) ..
+
+
+
         "list[current_name;armor;0,4;5,1;]"..
         "list[current_name;offhand;6,4;10,1;]" ..
-        "label[0,5.5;-------------------------------------------]"..
+        "label[0,5;-------------------------------------------]"..
         "list[current_player;offhand;6,6;9,1;]" ..
         "list[current_player;armor;0,6;9,1;]"..
         "list[current_player;main;0,7;9,4;]"..
@@ -213,20 +423,123 @@ minetest.register_on_respawnplayer(function(player)
         if is_empty then
             minetest.remove_node(chest_pos)
         else
-            local chest_formspec = "size[9,11]" ..
-                "background[-0.19,-0.25;9.45,11.75;mcl_formspec_itemslot.png]" ..
-                "list[current_name;main;0,0;9,4;]" ..
-                "list[current_name;armor;0,4;5,1;]" ..
-                "list[current_name;offhand;6,4;10,1;]" ..
-                "label[0,5.5;-------------------------------------------]" ..
-                "list[current_player;offhand;6,6;9,1;]" ..
-                "list[current_player;armor;0,6;9,1;]" ..
-                "list[current_player;main;0,7;9,4;]" ..
-                "listring[]" ..
-                "button[5,5;3,1;transfer;Transférer tout]"
+            local chest_formspec = "size[9,11]"..
+            "list[current_name;main;0,0;9,4;]"..
+-- Ligne 1
+    mcl_formspec.get_itemslot_bg_v4(0, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 0, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 0, 1, 1) ..
+-- Ligne 2
+    mcl_formspec.get_itemslot_bg_v4(0, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 1, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 1, 1, 1) ..
+
+-- Ligne 3
+    mcl_formspec.get_itemslot_bg_v4(0, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 2, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 2, 1, 1) ..
+
+-- Ligne 4
+    mcl_formspec.get_itemslot_bg_v4(0, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(1, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(2, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(3, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(4, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(5, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(6, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(7, 3, 1, 1) ..
+    mcl_formspec.get_itemslot_bg_v4(8, 3, 1, 1) ..
+
+-- Ligne 5
+mcl_formspec.get_itemslot_bg_v4(1, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 4, 1, 1) ..
+
+-- Ligne 6
+
+-- Ligne 7
+mcl_formspec.get_itemslot_bg_v4(1, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 6, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 6, 1, 1) ..
+
+-- Ligne 8
+
+mcl_formspec.get_itemslot_bg_v4(0, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 7, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 7, 1, 1) ..
+
+-- Ligne 9
+mcl_formspec.get_itemslot_bg_v4(0, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 8, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 8, 1, 1) ..
+
+-- Ligne 10
+mcl_formspec.get_itemslot_bg_v4(0, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 9, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 9, 1, 1) ..
+
+-- Ligne 11
+mcl_formspec.get_itemslot_bg_v4(0, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 10, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 10, 1, 1) ..
+
+
+
+            "list[current_name;armor;0,4;5,1;]"..
+            "list[current_name;offhand;6,4;10,1;]" ..
+            "label[0,5;-------------------------------------------]"..
+            "list[current_player;offhand;6,6;9,1;]" ..
+            "list[current_player;armor;0,6;9,1;]"..
+            "list[current_player;main;0,7;9,4;]"..
+            "listring[]"..
+            "button[5,5;3,1;transfer;Transférer tout]"
             chest_meta:set_string("formspec", chest_formspec)
         end
     end
 end)
-
-
