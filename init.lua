@@ -1,4 +1,5 @@
 minetest.register_node("chest_recovery:chest", {
+    drop = "",
     description = "Coffre de récupération" .. "\n" .. "32 emplacements",
     tiles = {"chest_chest.png^[sheet:2x2:0,0", "chest_chest.png^[sheet:2x2:0,0",
         "chest_chest.png^[sheet:2x2:1,0", "chest_chest.png^[sheet:2x2:1,0",
