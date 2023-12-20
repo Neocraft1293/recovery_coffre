@@ -208,10 +208,15 @@ for i = 1, inv:get_size("armor") do
     end
 end
 -- Mettre à jour l'armure du joueur
--- Mettre à jour l'armure du joueur
-local player_name = sender:get_player_name()
-local player = minetest.get_player_by_name(player_name)
-mcl_armor.update(player)
+-- Vérifier si le joueur existe
+    -- Vérifier si le mod "mcl_armor" est chargé
+    if minetest.get_modpath("mcl_armor") then
+        -- Mettre à jour les informations du joueur avec le mod
+        local player_name = sender:get_player_name()
+        local player = minetest.get_player_by_name(player_name)
+        mcl_armor.update(player)
+    end
+
 
 
 
