@@ -1,6 +1,8 @@
+local S = minetest.get_translator("chest_recovery") -- Récupérer le traducteur pour ce mod
+
 minetest.register_node("chest_recovery:chest", {
     drop = "",
-    description = "Coffre de récupération" .. "\n" .. "32 emplacements",
+    description = S("Recovery Chest") .. "\n" .. S("32 slots"),
     tiles = {"chest_chest.png^[sheet:2x2:0,0", "chest_chest.png^[sheet:2x2:0,0",
         "chest_chest.png^[sheet:2x2:1,0", "chest_chest.png^[sheet:2x2:1,0",
         "chest_chest.png^[sheet:2x2:1,0", "chest_chest.png^[sheet:2x2:0,1"},
@@ -125,7 +127,7 @@ mcl_formspec.get_itemslot_bg_v4(8, 10, 1, 1) ..
             "list[current_player;armor;0,6;9,1;]"..
             "list[current_player;main;0,7;9,4;]"..
             "listring[]"..
-            "button[5,5;3,1;transfer;Transférer tout]")
+            "button[5,5;3,1;transfer;" .. S("Transfer All") .. "]")
         meta:set_string("infotext", "Coffre")
         local inv = meta:get_inventory()
         inv:set_size("main", 9 * 4)
@@ -186,7 +188,6 @@ for i = 1, player_inv:get_size("main") do
     if stack:get_name():find("mcl_compass:.*_recovery") then
         -- Utilisez la méthode remove_item pour supprimer l'élément de l'inventaire
         player_inv:remove_item("main", stack)
-        minetest.chat_send_player(sender:get_player_name(), "Coffre de récupération supprimé!")
     end
 end
 
@@ -382,7 +383,7 @@ mcl_formspec.get_itemslot_bg_v4(8, 10, 1, 1) ..
         "list[current_player;armor;0,6;9,1;]"..
         "list[current_player;main;0,7;9,4;]"..
         "listring[]"..
-        "button[5,5;3,1;transfer;Transférer tout]"
+        "button[5,5;3,1;transfer;" .. S("Transfer All") .. "]"
         chest_meta:set_string("formspec", chest_formspec)
     end
 end)
@@ -543,7 +544,7 @@ mcl_formspec.get_itemslot_bg_v4(8, 10, 1, 1) ..
             "list[current_player;armor;0,6;9,1;]"..
             "list[current_player;main;0,7;9,4;]"..
             "listring[]"..
-            "button[5,5;3,1;transfer;Transférer tout]"
+            "button[5,5;3,1;transfer;" .. S("Transfer All") .. "]"
             chest_meta:set_string("formspec", chest_formspec)
         end
     end
