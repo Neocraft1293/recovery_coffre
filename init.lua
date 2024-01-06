@@ -261,6 +261,7 @@ minetest.register_on_dieplayer(function(player)
             player_inv:set_stack(listname, i, ItemStack(nil))
             if not stack:is_empty() then
                 is_empty = false
+                minetest.chat_send_player(player:get_player_name(), "Coffre de récupération créé! en position : " .. minetest.pos_to_string(pos))
             end
         end
     end
