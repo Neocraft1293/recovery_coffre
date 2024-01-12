@@ -243,6 +243,8 @@ end
 
 
 minetest.register_on_dieplayer(function(player)
+    --recupérer le nom du joueur
+    local player_name = player:get_player_name()
     local player_inv = player:get_inventory()
     local pos = player:get_pos()
     pos.y = pos.y
@@ -269,18 +271,11 @@ minetest.register_on_dieplayer(function(player)
     if is_empty then
         minetest.remove_node(pos)
     else
-        local chest_formspec = "size[9,11]"..
-        "list[current_name;main;0,0;9,4;]"..
--- Ligne 1
-mcl_formspec.get_itemslot_bg_v4(0, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(1, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(2, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(3, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(4, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(5, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(6, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(7, 0, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(8, 0, 1, 1) ..
+        local chest_formspec = "size[9,12]"..
+        -- marque le speudo du joueur comme ca : recovery chest de "pseudo" avec l'option de traduction
+        "label[0,0; " .. S("Recovery Chest of") .. " " .. player_name .. "]"..
+        "list[current_name;main;0,1;9,4;]"..
+
 -- Ligne 2
 mcl_formspec.get_itemslot_bg_v4(0, 1, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(1, 1, 1, 1) ..
@@ -314,33 +309,34 @@ mcl_formspec.get_itemslot_bg_v4(6, 3, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(7, 3, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(8, 3, 1, 1) ..
 
--- Ligne 5
+--ligne 5
+mcl_formspec.get_itemslot_bg_v4(0, 4, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(1, 4, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(2, 4, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(3, 4, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(4, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 4, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(6, 4, 1, 1) ..
-
+mcl_formspec.get_itemslot_bg_v4(7, 4, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 4, 1, 1) ..
 -- Ligne 6
+mcl_formspec.get_itemslot_bg_v4(1, 5, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 5, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 5, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 5, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 5, 1, 1) ..
 
--- Ligne 7
-mcl_formspec.get_itemslot_bg_v4(1, 6, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(2, 6, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(3, 6, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(4, 6, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(6, 6, 1, 1) ..
+
+
+
 
 -- Ligne 8
 
-mcl_formspec.get_itemslot_bg_v4(0, 7, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(1, 7, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(2, 7, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(3, 7, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(4, 7, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(5, 7, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(6, 7, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(7, 7, 1, 1) ..
-mcl_formspec.get_itemslot_bg_v4(8, 7, 1, 1) ..
 
 -- Ligne 9
 mcl_formspec.get_itemslot_bg_v4(0, 8, 1, 1) ..
@@ -375,16 +371,29 @@ mcl_formspec.get_itemslot_bg_v4(6, 10, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(7, 10, 1, 1) ..
 mcl_formspec.get_itemslot_bg_v4(8, 10, 1, 1) ..
 
+--ligne 12
+mcl_formspec.get_itemslot_bg_v4(0, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(1, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(2, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(3, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(4, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(5, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(6, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(7, 11, 1, 1) ..
+mcl_formspec.get_itemslot_bg_v4(8, 11, 1, 1) ..
 
 
-        "list[current_name;armor;0,4;5,1;]"..
-        "list[current_name;offhand;6,4;10,1;]" ..
-        "label[0,5;-------------------------------------------]"..
-        "list[current_player;offhand;6,6;9,1;]" ..
-        "list[current_player;armor;0,6;9,1;]"..
-        "list[current_player;main;0,7;9,4;]"..
+
+
+        "list[current_name;armor;0,5;5,1;]"..
+        "list[current_name;offhand;6,5;10,1;]" ..
+        -- marque le speudo du joueur comme ca : recovery chest de "pseudo" avec l'option de traduction
+        "label[0,6; -------------------------------------------]"..
+        "list[current_player;offhand;6,7;9,1;]" ..
+        "list[current_player;armor;0,7;9,1;]"..
+        "list[current_player;main;0,8;9,4;]"..
         "listring[]"..
-        "button[5,5;3,1;transfer;" .. S("Transfer All") .. "]"
+        "button[5,6;3,1;transfer;" .. S("Transfer All") .. "]"
         chest_meta:set_string("formspec", chest_formspec)
     end
 end)
