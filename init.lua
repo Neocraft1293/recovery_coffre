@@ -244,7 +244,6 @@ end
 
 minetest.register_on_dieplayer(function(player)
     --recupérer le nom du joueur
-    local player_name = player:get_player_name()
     local player_inv = player:get_inventory()
     local pos = player:get_pos()
     pos.y = pos.y
@@ -273,7 +272,7 @@ minetest.register_on_dieplayer(function(player)
     else
         local chest_formspec = "size[9,12]"..
         -- marque le speudo du joueur comme ca : recovery chest de "pseudo" avec l'option de traduction
-        "label[0,0; " .. S("Recovery Chest of") .. " " .. player_name .. "]"..
+        "label[0,0; " .. S("Recovery Chest of") .. " " .. player:get_player_name() .. "]"..
         "list[current_name;main;0,1;9,4;]"..
 
 -- Ligne 2
