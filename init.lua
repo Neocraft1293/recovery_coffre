@@ -242,20 +242,96 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Fonction appelée lorsqu'un joueur meurt
 minetest.register_on_dieplayer(function(player)
-    --recupérer le nom du joueur
+    -- Récupérer l'inventaire du joueur
     local player_inv = player:get_inventory()
-    local pos = player:get_pos()
-    pos.y = pos.y
-    minetest.chat_send_player (player:get_player_name(), "Vous êtes mort, au coordonnées : " .. minetest.pos_to_string(pos))
+    pos = player:get_pos()
+    pos.y = pos.y -- Réglage de la coordonnée Y (elle semble inchangée)
 
+    -- rendre les cordonner en entier
+ 
+
+    -- Envoyer un message au joueur indiquant ses coordonnées après la mort
+    minetest.chat_send_player(player:get_player_name(), "Vous êtes mort, aux coordonnées : " .. minetest.pos_to_string(pos))
+
+    --detecter si la postion du pos est dans un bloc vide
+    local node = minetest.get_node(pos)
+    --si le node name n'est pas air alors on marque le message
+    if node.name ~= "air" then
+        --recherche de la position dun bloc vide au dessus du de la position 
+        --temp que le node name n'est pas air alors on ajoute 1 a la position Y
+        while node.name ~= "air" do
+            pos.y = pos.y + 1
+            node = minetest.get_node(pos)
+        end
+        --on marque le message avec la nouvelle position
+    end
+
+
+    --marque le biome de pos
+    --si le biome est EndIsland alors on marque le message
+    if minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndIsland" then
+        --on marque le message
+        minetest.chat_send_player(player:get_player_name(), "votre coffre de récupération est dans le vide")
+        --on met la position du coffre a la position du joueur
+        -- effinit la auteur du coffre a 27000
+        --si la position est plus haut que 27000 alors on met la position a 27000
+        minetest.chat_send_player(player:get_player_name(), "la position Y est : " .. pos.y)
+        if pos.y < -27000 then
+            pos.y = -27000
+        end
+                
+    end
+
+    -- Placer un coffre de récupération à la position du joueur décédé
     minetest.set_node(pos, {name = "chest_recovery:chest"})
+    minetest.chat_send_player(player:get_player_name(), "votre coffre de récupération est à la position : " .. minetest.pos_to_string(pos))
 
+
+    -- Obtenir les métadonnées et l'inventaire du coffre de récupération
     local chest_meta = minetest.get_meta(pos)
     local chest_inv = chest_meta:get_inventory()
 
     local is_empty = true
 
+    -- Transférer les objets de l'inventaire du joueur au coffre de récupération
     for _, listname in ipairs({"main", "armor", "offhand", "craft"}) do
         for i = 1, player_inv:get_size(listname) do
             local stack = player_inv:get_stack(listname, i)
@@ -267,9 +343,11 @@ minetest.register_on_dieplayer(function(player)
         end
     end
 
+    -- Si l'inventaire du joueur était vide, supprimer le coffre
     if is_empty then
         minetest.remove_node(pos)
     else
+        -- Mettre à jour le formulaire du coffre avec les emplacements d'objets
         local chest_formspec = "size[9,12]"..
         -- marque le speudo du joueur comme ca : recovery chest de "pseudo" avec l'option de traduction
         "label[0,0; " .. S("Recovery Chest of") .. " " .. player:get_player_name() .. "]"..
@@ -396,6 +474,53 @@ mcl_formspec.get_itemslot_bg_v4(8, 11, 1, 1) ..
         chest_meta:set_string("formspec", chest_formspec)
     end
 end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
