@@ -305,15 +305,9 @@ minetest.register_on_dieplayer(function(player)
     end
 
 
-    --marque le biome de pos
-    --si le biome est EndIsland alors on marque le message
+    --si le biome est EndIsland alors
     if minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndIsland" then
-        --on marque le message
-        minetest.chat_send_player(player:get_player_name(), "votre coffre de récupération est dans le vide")
-        --on met la position du coffre a la position du joueur
-        -- effinit la auteur du coffre a 27000
         --si la position est plus haut que 27000 alors on met la position a 27000
-        minetest.chat_send_player(player:get_player_name(), "la position Y est : " .. pos.y)
         if pos.y < -27000 then
             pos.y = -27000
         end
