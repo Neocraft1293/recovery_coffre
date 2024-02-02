@@ -291,6 +291,18 @@ minetest.register_on_dieplayer(function(player)
     -- Envoyer un message au joueur indiquant ses coordonnées après la mort
     minetest.chat_send_player(player:get_player_name(), "Vous êtes mort, aux coordonnées : " .. minetest.pos_to_string(pos))
 
+
+
+            --si le biome est EndIsland alors
+    if minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "End" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndBarrens" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndMidlands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndHighlands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndSmallIslands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndBorder" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndIsland" then
+        --si la position est plus haut que 27000 alors on met la position a 27000
+        if pos.y < -27000 then
+            pos.y = -27000
+        end
+                
+    end
+
+        
     --detecter si la postion du pos est dans un bloc vide
     local node = minetest.get_node(pos)
     --si le node name n'est pas air alors on marque le message
@@ -305,14 +317,7 @@ minetest.register_on_dieplayer(function(player)
     end
 
 
-    --si le biome est EndIsland alors
-    if minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "End" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndBarrens" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndMidlands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndHighlands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndSmallIslands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndBorder" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndIsland" then
-        --si la position est plus haut que 27000 alors on met la position a 27000
-        if pos.y < -27000 then
-            pos.y = -27000
-        end
-                
-    end
+
 
     -- Placer un coffre de récupération à la position du joueur décédé
     minetest.set_node(pos, {name = "chest_recovery:chest"})
