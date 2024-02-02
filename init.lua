@@ -297,7 +297,7 @@ minetest.register_on_dieplayer(function(player)
     if pos.y < -27000 and pos.y > -28000 then
         --si la position est plus haut que 27000 alors on met la position a 27000
         if pos.y < -27000 then
-            pos.y = -26999
+            pos.y = -27001
         end
                 
     end
