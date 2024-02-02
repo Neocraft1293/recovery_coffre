@@ -306,7 +306,7 @@ minetest.register_on_dieplayer(function(player)
 
 
     --si le biome est EndIsland alors
-    if minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndIsland" then
+    if minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "End" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndBarrens" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndMidlands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndHighlands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndSmallIslands" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndBorder" or minetest.get_biome_name(minetest.get_biome_data(pos).biome) == "EndIsland" then
         --si la position est plus haut que 27000 alors on met la position a 27000
         if pos.y < -27000 then
             pos.y = -27000
