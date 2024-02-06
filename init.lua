@@ -286,6 +286,9 @@ minetest.register_on_dieplayer(function(player)
     pos.y = pos.y -- Réglage de la coordonnée Y (elle semble inchangée)
 
     -- rendre les cordonner en entier
+    pos.x = math.floor(pos.x)
+    pos.y = math.floor(pos.y)
+    pos.z = math.floor(pos.z)
  
 
     -- Envoyer un message au joueur indiquant ses coordonnées après la mort
