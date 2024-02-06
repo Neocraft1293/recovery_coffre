@@ -529,10 +529,10 @@ minetest.register_on_respawnplayer(function(player)
 
     -- Create the recovery compass item
     local recovery_compass = ItemStack("mcl_compass:" .. random_frame .. "_recovery")
-    local player_inv = player:get_inventory()
+    local player_inv_2 = player:get_inventory()
 
-    if player_inv then
-        player_inv:add_item("main", recovery_compass)
+    if player_inv_2 then
+        player_inv_2:add_item("main", recovery_compass)
     end
 
 end)
