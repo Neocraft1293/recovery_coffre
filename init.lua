@@ -282,7 +282,7 @@ end
 minetest.register_on_dieplayer(function(player)
     -- Récupérer l'inventaire du joueur
     local player_inv = player:get_inventory()
-    pos = player:get_pos()
+    local pos = player:get_pos()
     pos.y = pos.y -- Réglage de la coordonnée Y (elle semble inchangée)
 
     -- rendre les cordonner en entier
